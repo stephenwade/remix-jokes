@@ -2,6 +2,10 @@
 
 - [Remix Docs](https://remix.run/docs)
 
+## Tutorial
+
+I'm building this app from the Remix [Jokes App Tutorial](https://remix.run/docs/en/v1/tutorials/jokes).
+
 ## Development
 
 From your terminal:
