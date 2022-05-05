@@ -1,5 +1,5 @@
 import type { LinksFunction } from '@remix-run/node';
-import { Outlet, Link } from '@remix-run/react';
+import { Link, Outlet } from '@remix-run/react';
 
 import stylesUrl from '~/styles/jokes.css';
 
