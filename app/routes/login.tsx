@@ -22,9 +22,9 @@ function validatePassword(password: unknown) {
   }
 }
 
-function validateUrl(url: any) {
-  let urls = ['/jokes', '/jokes/new', '/', 'https://remix.run'];
-  if (urls.includes(url)) {
+function validateUrl(url: unknown) {
+  const urls = ['/jokes', '/jokes/new', '/', 'https://remix.run'];
+  if (typeof url === 'string' && urls.includes(url)) {
     return url;
   }
   return '/jokes';
