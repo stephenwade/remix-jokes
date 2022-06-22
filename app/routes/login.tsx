@@ -12,13 +12,13 @@ export const links: LinksFunction = () => {
 
 function validateUsername(username: unknown) {
   if (typeof username !== 'string' || username.length < 3) {
-    return `Usernames must be at least 3 characters long`;
+    return 'Usernames must be at least 3 characters long';
   }
 }
 
 function validatePassword(password: unknown) {
   if (typeof password !== 'string' || password.length < 6) {
-    return `Passwords must be at least 6 characters long`;
+    return 'Passwords must be at least 6 characters long';
   }
 }
 
@@ -58,7 +58,7 @@ export const action: ActionFunction = async ({ request }) => {
     typeof redirectTo !== 'string'
   ) {
     return badRequest({
-      formError: `Form not submitted correctly.`,
+      formError: 'Form not submitted correctly.',
     });
   }
 
@@ -80,7 +80,7 @@ export const action: ActionFunction = async ({ request }) => {
       if (!user) {
         return badRequest({
           fields,
-          formError: `Username/Password combination is incorrect`,
+          formError: 'Username/Password combination is incorrect',
         });
       }
 
@@ -100,7 +100,7 @@ export const action: ActionFunction = async ({ request }) => {
       if (!user) {
         return badRequest({
           fields,
-          formError: `Something went wrong trying to create a new user.`,
+          formError: 'Something went wrong trying to create a new user.',
         });
       }
       return createUserSession(user.id, redirectTo);
@@ -108,7 +108,7 @@ export const action: ActionFunction = async ({ request }) => {
     default: {
       return badRequest({
         fields,
-        formError: `Login type invalid`,
+        formError: 'Login type invalid',
       });
     }
   }
