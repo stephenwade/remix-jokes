@@ -1,5 +1,5 @@
 import type { Joke } from '@prisma/client';
-import type { LoaderFunction } from '@remix-run/node';
+import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Link, useCatch, useLoaderData } from '@remix-run/react';
 
@@ -23,6 +23,10 @@ export const loader: LoaderFunction = async () => {
 
   return json(data);
 };
+
+export const meta: MetaFunction = () => ({
+  title: 'Home | Remix Jokes',
+});
 
 export default function JokesIndexRoute() {
   const data: LoaderData = useLoaderData<LoaderData>();

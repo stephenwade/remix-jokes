@@ -1,5 +1,9 @@
 import type { Joke } from '@prisma/client';
-import type { ActionFunction, LoaderFunction } from '@remix-run/node';
+import type {
+  ActionFunction,
+  LoaderFunction,
+  MetaFunction,
+} from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import { Link, useCatch, useLoaderData, useParams } from '@remix-run/react';
 
@@ -57,6 +61,20 @@ export const action: ActionFunction = async ({ params, request }) => {
   await db.joke.delete({ where: { id: joke.id } });
 
   return redirect('/jokes');
+};
+
+export const meta: MetaFunction = ({ data }: { data?: LoaderData }) => {
+  if (!data) {
+    return {
+      title: 'No joke | Remix Jokes',
+      description: 'No joke found',
+    };
+  }
+
+  return {
+    title: `"${data.joke.name}" | Remix Jokes`,
+    description: `Enjoy the "${data.joke.name}" joke and much more`,
+  };
 };
 
 export default function JokeRoute() {
